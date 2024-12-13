@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Options</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('upload') }}" class="button">Back</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br><br>
+    <div class="container">
+        <h2>Heart Disease Predict</h2>
+        <br>
+        <form method="POST">
+            <button name="action" value="upload_csv">Upload CSV File for Prediction</button>
+            <button name="action" value="manual_prediction">Manual Prediction</button>
+        </form>
+    </div>
+</body>
+</html>

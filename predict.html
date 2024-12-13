@@ -1,0 +1,202 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Prediction</title>
+    <link rel="stylesheet"type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('upload') }}" class="button">Back</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Heart Failure Prediction</h2>
+        <form id="predictionForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="anaemia">Anaemia (1 = Yes, 0 = No):</label>
+            <input type="number" id="anaemia" name="anaemia" min="0" max="1" required>
+
+            <label for="creatinine_phosphokinase">Creatinine Phosphokinase (mcg/L):</label>
+            <input type="number" id="creatinine_phosphokinase" name="creatinine_phosphokinase" required>
+
+            <label for="diabetes">Diabetes (1 = Yes, 0 = No):</label>
+            <input type="number" id="diabetes" name="diabetes" min="0" max="1" required>
+
+            <label for="ejection_fraction">Ejection Fraction (%):</label>
+            <input type="number" id="ejection_fraction" name="ejection_fraction" required>
+
+            <label for="high_blood_pressure">High Blood Pressure (1 = Yes, 0 = No):</label>
+            <input type="number" id="high_blood_pressure" name="high_blood_pressure" min="0" max="1" required>
+
+            <label for="platelets">Platelets (k/mL):</label>
+            <input type="number" id="platelets" name="platelets" required>
+
+            <label for="serum_creatinine">Serum Creatinine (mg/dL):</label>
+            <input type="number" id="serum_creatinine" name="serum_creatinine" required>
+
+            <label for="serum_sodium">Serum Sodium (mEq/L):</label>
+            <input type="number" id="serum_sodium" name="serum_sodium" required>
+
+            <label for="sex">Sex (1 = Male, 0 = Female):</label>
+            <input type="number" id="sex" name="sex" min="0" max="1" required>
+
+            <label for="smoking">Smoking (1 = Yes, 0 = No):</label>
+            <input type="number" id="smoking" name="smoking" min="0" max="1" required>
+
+            <label for="time">Time (Follow-up days):</label>
+            <input type="number" id="time" name="time" required>
+
+            <button type="button" onclick="makePrediction()">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function makePrediction() {
+            const formData = {
+                age: parseFloat(document.getElementById('age').value),
+                anaemia: parseInt(document.getElementById('anaemia').value),
+                creatinine_phosphokinase: parseFloat(document.getElementById('creatinine_phosphokinase').value),
+                diabetes: parseInt(document.getElementById('diabetes').value),
+                ejection_fraction: parseFloat(document.getElementById('ejection_fraction').value),
+                high_blood_pressure: parseInt(document.getElementById('high_blood_pressure').value),
+                platelets: parseFloat(document.getElementById('platelets').value),
+                serum_creatinine: parseFloat(document.getElementById('serum_creatinine').value),
+                serum_sodium: parseFloat(document.getElementById('serum_sodium').value),
+                sex: parseInt(document.getElementById('sex').value),
+                smoking: parseInt(document.getElementById('smoking').value),
+                time: parseInt(document.getElementById('time').value),
+            };
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            const username =document.getElementById('name').value
+            document.getElementById('result').innerText = `Prediction (Death Event):\n Hi ${username} you have  ${result.prediction}`;
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('upload') }}" class="button">Back</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Heart Disease Prediction</h2>
+        <form id="predictionForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="anaemia">Anaemia (1 = Yes, 0 = No):</label>
+            <input type="number" id="anaemia" name="anaemia" min="0" max="1" required>
+
+            <label for="creatinine_phosphokinase">Creatinine Phosphokinase (mcg/L):</label>
+            <input type="number" id="creatinine_phosphokinase" name="creatinine_phosphokinase" required>
+
+            <label for="diabetes">Diabetes (1 = Yes, 0 = No):</label>
+            <input type="number" id="diabetes" name="diabetes" min="0" max="1" required>
+
+            <label for="ejection_fraction">Ejection Fraction (%):</label>
+            <input type="number" id="ejection_fraction" name="ejection_fraction" required>
+
+            <label for="high_blood_pressure">High Blood Pressure (1 = Yes, 0 = No):</label>
+            <input type="number" id="high_blood_pressure" name="high_blood_pressure" min="0" max="1" required>
+
+            <label for="platelets">Platelets (k/mL):</label>
+            <input type="number" id="platelets" name="platelets" required>
+
+            <label for="serum_creatinine">Serum Creatinine (mg/dL):</label>
+            <input type="number" id="serum_creatinine" name="serum_creatinine" required>
+
+            <label for="serum_sodium">Serum Sodium (mEq/L):</label>
+            <input type="number" id="serum_sodium" name="serum_sodium" required>
+
+            <label for="sex">Sex (1 = Male, 0 = Female):</label>
+            <input type="number" id="sex" name="sex" min="0" max="1" required>
+
+            <label for="smoking">Smoking (1 = Yes, 0 = No):</label>
+            <input type="number" id="smoking" name="smoking" min="0" max="1" required>
+
+            <label for="time">Time (Follow-up days):</label>
+            <input type="number" id="time" name="time" required>
+
+            <button type="button" onclick="makePrediction()">Predict</button>
+        </form>
+        <div id="result"></div>
+        <button id="moreInfoButton" style="display:none;" onclick="redirectToMoreInfo()">More Info</button>
+    </div>
+
+    <script>
+        async function makePrediction() {
+            const formData = {
+                age: parseFloat(document.getElementById('age').value),
+                anaemia: parseInt(document.getElementById('anaemia').value),
+                creatinine_phosphokinase: parseFloat(document.getElementById('creatinine_phosphokinase').value),
+                diabetes: parseInt(document.getElementById('diabetes').value),
+                ejection_fraction: parseFloat(document.getElementById('ejection_fraction').value),
+                high_blood_pressure: parseInt(document.getElementById('high_blood_pressure').value),
+                platelets: parseFloat(document.getElementById('platelets').value),
+                serum_creatinine: parseFloat(document.getElementById('serum_creatinine').value),
+                serum_sodium: parseFloat(document.getElementById('serum_sodium').value),
+                sex: parseInt(document.getElementById('sex').value),
+                smoking: parseInt(document.getElementById('smoking').value),
+                time: parseInt(document.getElementById('time').value),
+            };
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            const username = document.getElementById('name').value;
+            document.getElementById('result').innerText = `Prediction (Death Event):\n Hi ${username}, you have ${result.prediction}`;
+            
+            // Show the "More Info" button after prediction
+            document.getElementById('moreInfoButton').style.display = "block";
+        }
+
+        function redirectToMoreInfo() {
+            window.location.href = '/more_info';
+        }
+    </script>
+</body>
+</html>

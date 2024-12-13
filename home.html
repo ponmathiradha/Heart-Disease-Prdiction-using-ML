@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+   
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact Us</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Sections -->
+    <section class="background-section">
+        <!-- Home Section -->
+        <div class="content-section" id="home">
+            <h2>Heart Disease Prediction</h2>
+            <p>Your heart is one of the most vital organs, responsible for pumping blood throughout your body. It supplies oxygen and nutrients to tissues and removes carbon dioxide and wastes. However, heart failure occurs when your heart can’t pump enough blood to meet your body's needs.
+                Heart failure is often caused by conditions such as coronary artery disease, high blood pressure, or diabetes. Monitoring heart health is crucial for early intervention and improving your quality of life. Our AI-based system helps 
+                predict heart disease risks, allowing you to take proactive steps toward better heart health.</p>
+            <button class="explore-btn"onclick = "window.location.href='{{ url_for('login') }}'">Explore My Report</button>
+
+
+        </div>
+
+        <!-- About Us Section -->
+        <div class="content-section" id="about" style="display: none;">
+            <h2>About Us</h2>
+            <p>We are dedicated to helping people monitor and improve their heart health using AI-driven prediction models...</p>
+        </div>
+
+        <!-- Contact Us Section -->
+        <div class="content-section" id="contact" style="display: none;">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us: <br>Email: sanjith@gmail.com
+                <br>Email: radha@gmail.com<br>Phone:9728765413</p>
+        </div>
+
+        <!-- Login Section -->
+        <div class="content-section" id="login" style="display: none;">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label><br>
+                <input type="text" id="username" name="username" required><br><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required>
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePasswordVisibility('password', 'toggleIcon')" id="toggleIcon"></i><br><br>
+
+                <button type="submit">Login</button><br><br>
+                <p>Don't have an account? <a href="#" onclick="showSection('signup')">Sign up</a></p>
+            </form>
+        </div>
+
+        <!-- Sign Up Section -->
+        <div class="content-section" id="signup" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label for="new_username">Username:</label><br>
+                <input type="text" id="new_username" name="new_username" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="new_password">Password:</label><br>
+                <input type="password" id="new_password" name="new_password" required>
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePasswordVisibility('new_password', 'newPasswordToggleIcon')" id="newPasswordToggleIcon"></i><br><br>
+
+                <label for="confirm_password">Confirm Password:</label><br>
+                <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+                <label for="phone">Phone Number:</label><br>
+                <input type="text" id="phone" name="phone" required><br><br>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'none';
+
+            document.getElementById(sectionId).style.display = 'block';
+            
+        }
+
+        function togglePasswordVisibility(passwordFieldId, toggleIconId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const toggleIcon = document.getElementById(toggleIconId);
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            }
+        }
+    </script>
+</body>
+</html>
